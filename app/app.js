@@ -14,7 +14,7 @@ app.use(morgan("dev"));
 
 // ROUTES
 app.get('/', (req, res) => {
-    res.send('Hello from proyecTopicos!!');
+    res.send('<h1>Hello from proyecTopicos!!</h1>');
 });
 
 app.use("/api/", apiRoutes);

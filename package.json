@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node main",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "echo \"Error: no seed specified\" && exit 1",
+    "seed": "node database/database.seeder",
     "dev": "nodemon main"
   },
   "repository": {
