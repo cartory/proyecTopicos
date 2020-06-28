@@ -28,6 +28,14 @@ class Model {
     // sample return = null
     return await this.db.child(path).remove();
   }
+
+  static toObject(json) {
+    return JSON.parse(json);
+  }
+
+  static toJson(value) {
+    return JSON.stringify(value);
+  }
 }
 
 module.exports = { Model };

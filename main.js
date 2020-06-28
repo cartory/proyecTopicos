@@ -1,14 +1,14 @@
-const dotenv = require('dotenv');
-const app = require('./app/app');
+const dotenv = require("dotenv");
+const { App } = require("./app/app");
 
 dotenv.config();
 
-// RUNNING THE SERVER
-function run () {
-    const url = `http://${process.env.HOST}:${process.env.PORT}`;
-    app.listen(process.env.PORT);
-    console.log('server on ', url);
-    console.log(new Date());
+function main() {
+  const server = new App();
+  const url = `http://${process.env.HOST}:${process.env.PORT}`;
+  server.start(process.env.PORT);
+  console.log("server on ", url);
+  console.log(new Date());
 }
 
-run();
+main();

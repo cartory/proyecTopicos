@@ -1,22 +1,31 @@
-//  REQUIRES
-const morgan = require("morgan");
+const { MyRouter } = require("../src/routes");
+
 const express = require("express");
+const morgan = require("morgan");
 
-const apiRoutes = require("../src/routes");
+class App {
+  constructor() {
+    this.app = express();
+    this.config();
+    this.routes();
+  }
 
-//  INIT
-const app = express();
+  config() {
+    this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(express.json());
+    this.app.use(morgan("dev"));
+  }
 
-//  USES
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(morgan("dev"));
+  routes() {
+    this.app.use("/api", MyRouter.instance.router);
+    this.app.get("/", (req, res) => {
+      res.send("<h1>Hello from proyecTopicos!!</h1>");
+    });
+  }
 
-// ROUTES
-app.get('/', (req, res) => {
-    res.send('<h1>Hello from proyecTopicos!!</h1>');
-});
+  start(port) {
+    this.app.listen(port);
+  }
+}
 
-app.use("/api/", apiRoutes);
-
-module.exports = app;
+module.exports = { App };

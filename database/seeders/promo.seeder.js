@@ -1,13 +1,15 @@
-const { Promo } = require('../../src/models/Promo');
+const { Promo } = require("../../src/models/Promo");
 
-module.exports = {
-    seed: async function () {
-        const newPromo = {
-            name: "promo",
-            description: "promo",
-            discount: 0.2,
-        };
+class PromoSeeder {
+  static async seed() {
+    const newPromo = {
+      name: "promo",
+      description: "promo",
+      discount: 0.2,
+    };
 
-        await Promo.instance.create(newPromo);
-    },
-};
+    await Promo.instance.create(newPromo);
+  }
+}
+
+module.exports = { PromoSeeder };

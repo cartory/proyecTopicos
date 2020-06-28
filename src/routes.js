@@ -1,20 +1,30 @@
 const { Router } = require("express");
-const routes = Router();
+const { PromoController } = require("./controllers/promo.controller");
+const { CategoryController } = require("./controllers/category.controller");
 
-const contactController = require("./controllers/promo.controller");
-const categoryController = require("./controllers/category.controller");
+class MyRouter {
+  static instance = new MyRouter();
 
-routes
-  //  PROMOS
-  .get("/promos", contactController.all)
-  .post("/promos", contactController.store)
-  .get("/promos/:id", contactController.find)
-  .put("/promos/:id", contactController.update)
-  .delete("/promos/:id", contactController.destroy)
-  //  CATEGORIES
-  .get("/categories", categoryController.all)
-  .post("/categories", categoryController.store)
-  .get("/categories/:id", categoryController.find)
-  .put("/categories/:id", categoryController.update)
-  .delete("/categories/:id", categoryController.destroy);
-module.exports = routes;
+  constructor() {
+    this.router = Router();
+    this.loadRoutes();
+  }
+
+  loadRoutes() {
+    this.router
+      //  PROMOS
+      .get("/promos", PromoController.all)
+      .post("/promos", PromoController.store)
+      .get("/promos/:id", PromoController.find)
+      .put("/promos/:id", PromoController.update)
+      .delete("/promos/:id", PromoController.destroy)
+      //  CATEGORIES
+      .get("/categories", CategoryController.all)
+      .post("/categories", CategoryController.store)
+      .get("/categories/:id", CategoryController.find)
+      .put("/categories/:id", CategoryController.update)
+      .delete("/categories/:id", CategoryController.destroy);
+  }
+}
+
+module.exports = { MyRouter };

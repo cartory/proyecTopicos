@@ -1,52 +1,25 @@
-const {} = require('../models/category');
+const { Category } = require("../models/category");
 
-module.exports = {
-  all: (req, res) => {
-    // db.once("value").then((snap) => {
-    //   res.status(200).json(snap.val());
-    // });
-  },
+class CategoryController {
+  static async all(req, res) {
+    res.json(await Category.instance.all());
+  }
 
-  find: (req, res) => {
-    // db.child(req.params.id)
-    //   .once("value")
-    //   .then((snap) => {
-    //     res.status(200).json(snap.val());
-    //   });
-  },
+  static async find(req, res) {
+    res.json(await Category.instance.find(req.params.id));
+  }
 
-  store: (req, res) => {
-    const newContact = {
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      email: req.body.email,
-    };
-    // db.push(newContact).then((value) => {
-    //   // value = "https://proyectopicos-efc3c.firebaseio.com/contacts/-MArCVwkubZjdjyGpCE9"
-    //   res.status(200).json(value);
-    // });
-  },
+  static async store(req, res) {
+    res.json(await Category.instance.create(req.body));
+  }
 
-  update: (req, res) => {
-    const newContact = {
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      email: req.body.email,
-    };
-    // db.child(req.params.id)
-    //   .set(newContact)
-    //   .then((value) => {
-    //     // value = null
-    //     res.status(200).json(value);
-    //   });
-  },
+  static async update(req, res) {
+    res.json(await Category.instance.update(req.params.id, req.body));
+  }
 
-  destroy: (req, res) => {
-    // db.child(req.params.id)
-    //   .remove()
-    //   .then((value) => {
-    //     // value = null
-    //     res.status(200).json(value);
-    //   });
-  },
-};
+  static async destroy(req, res) {
+    res.json(await Category.instance.destroy(req.params.id));
+  }
+}
+
+module.exports = { CategoryController };

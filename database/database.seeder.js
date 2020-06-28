@@ -1,13 +1,13 @@
-const categorySeeder = require("./seeders/category.seeder");
-const promoSeeder = require("./seeders/promo.seeder");
+const { CategorySeeder } = require("./seeders/category.seeder");
+const { PromoSeeder } = require("./seeders/promo.seeder");
 
 process.on("exit", () => console.log("DATABASE SEEDED"));
 
 async function seedDatabase() {
-    await categorySeeder.seed();
-    await promoSeeder.seed();
+  await CategorySeeder.seed();
+  await PromoSeeder.seed();
 
-    process.exit(0);
+  process.exit(0);
 }
 
 seedDatabase();
