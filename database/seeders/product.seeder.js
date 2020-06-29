@@ -3,15 +3,15 @@ const { Product } = require("../../src/models/Product");
 class ProductSeeder {
   static async seed() {
     const newProduct = {
-        code: 112233,
-        name: "Pernil",
-        description: "Pernil de puerco.",
-        stock: 20.0,
-        price: 30.0,
+        code: "KJADAJSJ1212DSS",
+        name: "Pilfrut pequeño.",
+        description: "Pilfrut 0.125 lt",
+        stock: 50.0,
+        price: 0.5,
         category: [
-          "carnes",
+          "-MAxNXZRaXXR7KNb9WGe",
         ],
-        promo : "O782I-D4M54-H26MM"
+        promo : null
     };
 
     await Product.instance.create(newProduct);

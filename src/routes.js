@@ -2,6 +2,8 @@ const { Router } = require("express");
 const { PromoController } = require("./controllers/promo.controller");
 const { CategoryController } = require("./controllers/category.controller");
 const { UserController } = require("./controllers/user.controller");
+const { ProductController } = require("./controllers/product.controller");
+const { PaymentController } = require("./controllers/payment.controller");
 
 class MyRouter {
   static instance = new MyRouter();
@@ -36,7 +38,23 @@ class MyRouter {
       .post("/users/:id/clients", UserController.newClient)
       .put("/users/:id/clients/:cid", UserController.setClient)
       .get("/users/:id/clients/:cid", UserController.findClient)
-      .delete("/users/:id/clients/:cid", UserController.dropClient);
+      .delete("/users/:id/clients/:cid", UserController.dropClient)
+      // PRODUCTS
+      .get("/products", ProductController.all)
+      .post("/products", ProductController.store)
+      .get("/products/:id", ProductController.find)
+      .put("/products/:id", ProductController.update)
+      .delete("/products/:id", ProductController.destroy)
+      // PAYMENTS
+      .get("/payments", PaymentController.all)
+      .post("/payments", PaymentController.store)
+      .get("/payments/:id", PaymentController.find)
+      .put("/payments/:id", PaymentController.update)
+      .delete("/payments/:id", PaymentController.destroy)
+      // PAYMENT->BILL
+      .get("/payments/:id/bill", PaymentController.getBill)
+      .post("/payments/:id/bill", PaymentController.newBill);
+
   }
 }
 
