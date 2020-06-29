@@ -2,12 +2,19 @@ const { User } = require("../../src/models/User");
 
 class UserSeeder {
   static async seed() {
-    const data = {
+    const user = {
       nickname: "cartory",
       nro: 74942908,
     };
 
-    await User.instance.create(data);
+    const client = {
+      address: "C/Lemoine",
+      firstname: "pedro",
+      lastname: "caricari torrejon",
+      license: 8157826,
+    };
+
+    await User.instance.create(user);
   }
 }
 
