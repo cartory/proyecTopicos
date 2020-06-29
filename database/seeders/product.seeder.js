@@ -17,7 +17,6 @@ const categories = [
 class ProductSeeder {
   static async seed() {
     const newProduct = {
-<<<<<<< HEAD
       code: "??",
       name: "???",
       description: "???",
@@ -28,18 +27,6 @@ class ProductSeeder {
         "???",
       ],
       promo: null
-=======
-        code: "KJADAJSJ1212DSS",
-        name: "Pilfrut pequeño.",
-        description: "Pilfrut 0.125 lt",
-        stock: 50.0,
-        price: 0.5,
-        category: [
-          "-MAxNXZRaXXR7KNb9WGe",
-          "-MAxNxC-Jf-zpgBC620U"
-        ],
-        promoID : "-MAxYM8fCvAj7L3wDXVe"
->>>>>>> b33cf8a257e9c88a93deee54a2352a41d6372d63
     };
 
     await Product.instance.create(newProduct);
