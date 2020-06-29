@@ -4,6 +4,7 @@ const { CategoryController } = require("./controllers/category.controller");
 const { UserController } = require("./controllers/user.controller");
 const { ProductController } = require("./controllers/product.controller");
 const { PaymentController } = require("./controllers/payment.controller");
+const { OrderController } = require("./controllers/order.controller");
 
 class MyRouter {
   static instance = new MyRouter();
@@ -53,8 +54,14 @@ class MyRouter {
       .delete("/payments/:id", PaymentController.destroy)
       // PAYMENT->BILL
       .get("/payments/:id/bill", PaymentController.getBill)
-      .post("/payments/:id/bill", PaymentController.newBill);
-
+      .post("/payments/:id/bill", PaymentController.newBill)
+      // ORDERS
+      .get("/orders", OrderController.all)
+      .post("/orders", OrderController.store)
+      .post("/orders/:id/", )
+      .get("/orders/:id", OrderController.find)
+      .put("/orders/:id", OrderController.update)
+      .delete("/orders/:id", OrderController.destroy);
   }
 }
 
