@@ -6,6 +6,8 @@ class PromoSeeder {
       name: "promo",
       description: "promo",
       discount: 0.2,
+      dateInit: Date.now(),
+      dateEnd: Date.now()
     };
 
     await Promo.instance.create(newPromo);
