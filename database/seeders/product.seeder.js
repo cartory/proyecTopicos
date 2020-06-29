@@ -10,8 +10,9 @@ class ProductSeeder {
         price: 0.5,
         category: [
           "-MAxNXZRaXXR7KNb9WGe",
+          "-MAxNxC-Jf-zpgBC620U"
         ],
-        promo : null
+        promoID : "-MAxYM8fCvAj7L3wDXVe"
     };
 
     await Product.instance.create(newProduct);

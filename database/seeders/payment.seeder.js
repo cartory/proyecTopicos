@@ -6,8 +6,8 @@ class PaymentSeeder {
             date: "27/06/2020",
             amount: 200.1,
             description: "",
-            orderID: "",
-            paymet_methodID: "",
+            orderID: "-MAxzsAfSOFpaAhNRdPL",
+            paymet_methodID: "NULL",
             bill: {
                 date_emission: "27/06/2020",
                 amount: 200.1,
