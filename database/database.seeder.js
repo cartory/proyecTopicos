@@ -5,7 +5,7 @@ const { ProductSeeder } = require("./seeders/product.seeder");
 process.on("exit", () => console.log("DATABASE SEEDED"));
 
 async function seedDatabase() {
-  await ProductSeeder.seed();
+  await ProductSeeder.fake(5);
 
   process.exit(0);
 }
