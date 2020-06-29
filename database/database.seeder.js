@@ -6,13 +6,8 @@ const { OrderSeeder } = require("./seeders/order.seeder");
 process.on("exit", () => console.log("DATABASE SEEDED"));
 
 async function seedDatabase() {
-<<<<<<< HEAD
-  await ProductSeeder.fake(5);
+  await ProductSeeder.fake(100);
 
-=======
-  // await ProductSeeder.seed();
-  await OrderSeeder.seed()
->>>>>>> b33cf8a257e9c88a93deee54a2352a41d6372d63
   process.exit(0);
 }
 
