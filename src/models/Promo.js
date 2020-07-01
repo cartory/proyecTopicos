@@ -7,6 +7,12 @@ class Promo extends Model {
   constructor() {
     super(collection);
   }
+
+  async test() {
+    return await this.db.on('value', async (snapshot) => {
+      return await snapshot.val();
+    });
+  }
 }
 
 module.exports = { Promo };

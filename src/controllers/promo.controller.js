@@ -2,7 +2,10 @@ const { Promo } = require("../models/Promo");
 
 class PromoController {
   static async all(req, res) {
-    res.json(await Promo.instance.all());
+    // Promo.instance.test();
+    var val = await Promo.instance.test();
+    console.log(val);
+    res.json(val);
   }
 
   static async find(req, res) {
