@@ -32,6 +32,11 @@ class ProductSeeder {
     await Product.instance.create(newProduct);
   }
 
+  static addDays(dateObj, numDays) {
+    dateObj.setDate(dateObj.getDate() + numDays);
+    return dateObj;
+ }
+
   static async fake(nro) {
     while (nro-- > 0) {
       var newProduct = {
@@ -46,8 +51,8 @@ class ProductSeeder {
           faker.random.arrayElement(categories),
         ],
         promo: {
-          discount : faker.random.number(1), 
-          endDate : faker.date.recent(2)
+          discount : faker.random.number({'min':0,'max':100})/100,
+          endDate : this.addDays(new Date(), faker.random.number({'min':0,'max':7})).getTime()
         }
       };
 

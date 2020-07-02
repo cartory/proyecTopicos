@@ -11,11 +11,14 @@ class Product extends Model {
   async getByPromo() {
 
     var products = await this.db.once("value");
-    var arary = [];
-
+    var array = [];
     products.forEach((product)=>{
-        
-    })
+        let d = new Date(product.child("promo").child("endDate").val());
+        let t = new Date();
+        if(t<=d){
+            array.push(product);
+        }
+    });
 
     return array;
   }

@@ -22,9 +22,14 @@ class ProductController {
   }
 
   static async getByPromo(req, res) {
+    console.log("WASSAAA");
     res.json(await Product.instance.getByPromo());
   }
 
+  static async getByCategory(req, res) {
+    console.log("DEBUG");
+    res.json(await Product.instance.getByCategory(req.params.cat));
+  }
 }
 
 module.exports = { ProductController };
