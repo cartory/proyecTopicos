@@ -21,7 +21,6 @@ class ProductController {
     res.json(await Product.instance.destroy(req.params.id));
   }
 
-
   static async getByPromo(req, res) {
     res.json(await Product.instance.getByPromo());
   }

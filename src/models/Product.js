@@ -9,16 +9,15 @@ class Product extends Model {
   }
 
   async getByPromo() {
-    var p = [];
-    this.db.once("value").then(
-        function(snapshot){
-            snapshot.forEach((product)=>{
-                p.push(product.child("promo").val());
-            })
-        }
-    );
 
-    return p;
+    var products = (await this.db.once("value"));
+    var data = [];
+    // console.log(products);
+    products.forEach((product) => {
+      console.log(product.val());
+    });
+
+    return products;
   }
 
 }
