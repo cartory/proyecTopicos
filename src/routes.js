@@ -55,7 +55,7 @@ class MyRouter {
       // ORDERS
       .get("/orders", OrderController.all)
       .post("/orders", OrderController.store)
-      .post("/orders/:id/", )
+      .post("/orders/:id/")
       .get("/orders/:id", OrderController.find)
       .put("/orders/:id", OrderController.update)
       .delete("/orders/:id", OrderController.destroy);

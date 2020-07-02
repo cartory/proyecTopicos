@@ -8,15 +8,14 @@ class Payment extends Model {
   constructor() {
     super(collection);
   }
-  
+
   async newBill(paymentID, bill) {
     return this.db.child(`${paymentID}/${billPayment}`).set(bill);
-	}
-
-  async getBill(paymentID) {
-    return await this.db.child(paymentID).child(billPayment).once('value');
   }
 
+  async getBill(paymentID) {
+    return await this.db.child(paymentID).child(billPayment).once("value");
+  }
 }
 
 module.exports = { Payment };
