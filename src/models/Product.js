@@ -26,9 +26,8 @@ class Product extends Model {
   async getByCategory(categoryID) {
     var products = await this.db.once("value");
     var array = [];
-    // console.log(products);
     products.forEach((product) => {
-      product.child("category").forEach((item) => {;
+      product.child("category").forEach((item) => {
         if (item.val() == categoryID) {
           console.log("match!!!");
           array.push(product.val());
@@ -36,6 +35,21 @@ class Product extends Model {
       });
     });
     console.log(array);
+    return array;
+  }
+
+  async getByName(name) {
+    var products = await this.db.once("value");
+    var array = [];
+    products.forEach((product) => {
+      if (product.child("name").val().toLowerCase().includes(name)) {
+        array.push(product.val());
+      } else if (
+        product.child("description").val().toLowerCase().includes(name)
+      ) {
+        array.push(product.val());
+      }
+    });
     return array;
   }
 }

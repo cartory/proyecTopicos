@@ -42,6 +42,7 @@ class MyRouter {
       // PRODUCTS BY PROMO & CATEGORY
       .get("/products/promo/get", ProductController.getByPromo)
       .get("/products/category/:cat", ProductController.getByCategory)
+      .get("/products/name/:name", ProductController.getByName)
       // PAYMENTS
       .get("/payments", PaymentController.all)
       .post("/payments", PaymentController.store)

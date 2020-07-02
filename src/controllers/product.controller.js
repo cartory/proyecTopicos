@@ -27,8 +27,11 @@ class ProductController {
   }
 
   static async getByCategory(req, res) {
-    console.log("DEBUG");
     res.json(await Product.instance.getByCategory(req.params.cat));
+  }
+
+  static async getByName(req, res) {
+    res.json(await Product.instance.getByName(req.params.name));
   }
 }
 
