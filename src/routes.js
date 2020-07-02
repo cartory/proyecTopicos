@@ -1,5 +1,4 @@
 const { Router } = require("express");
-const { PromoController } = require("./controllers/promo.controller");
 const { CategoryController } = require("./controllers/category.controller");
 const { UserController } = require("./controllers/user.controller");
 const { ProductController } = require("./controllers/product.controller");
@@ -40,9 +39,10 @@ class MyRouter {
       .get("/products/:id", ProductController.find)
       .put("/products/:id", ProductController.update)
       .delete("/products/:id", ProductController.destroy)
-      // PRODUCTS BY PROMO & CATEGORY
+      // PRODUCTS BY PROMO & CATEGORY & NAME
       .get("/products/promo", ProductController.getByPromo)
       .get("/products/category/:cat", ProductController.getByCategory)
+      .get("/products/name/:name", ProductController.getByName)
       // PAYMENTS
       .get("/payments", PaymentController.all)
       .post("/payments", PaymentController.store)
