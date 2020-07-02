@@ -45,7 +45,10 @@ class ProductSeeder {
           faker.random.arrayElement(categories),
           faker.random.arrayElement(categories),
         ],
-        promo: null
+        promo: {
+          discount : faker.random.number(1), 
+          endDate : faker.date.recent(2)
+        }
       };
 
       await Product.instance.create(newProduct);
