@@ -20,6 +20,12 @@ class ProductController {
   static async destroy(req, res) {
     res.json(await Product.instance.destroy(req.params.id));
   }
+
+
+  static async getByPromo(req, res) {
+    res.json(await Product.instance.getByPromo());
+  }
+
 }
 
 module.exports = { ProductController };

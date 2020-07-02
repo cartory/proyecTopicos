@@ -14,13 +14,11 @@ class Product extends Model {
         function(snapshot){
             snapshot.forEach((product)=>{
                 p.push(product.child("promo").val());
-                
             })
         }
     );
 
     return p;
-    
   }
 
 }

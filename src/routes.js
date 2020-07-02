@@ -46,6 +46,8 @@ class MyRouter {
       .get("/products/:id", ProductController.find)
       .put("/products/:id", ProductController.update)
       .delete("/products/:id", ProductController.destroy)
+      // PRODUCTS BY PROMO
+      .get("/products/promo", ProductController.getByPromo)
       // PAYMENTS
       .get("/payments", PaymentController.all)
       .post("/payments", PaymentController.store)
