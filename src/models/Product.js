@@ -10,16 +10,31 @@ class Product extends Model {
 
   async getByPromo() {
 
-    var products = (await this.db.once("value"));
-    var data = [];
-    // console.log(products);
-    products.forEach((product) => {
-      console.log(product.val());
-    });
+    var products = await this.db.once("value");
+    var arary = [];
 
-    return products;
+    products.forEach((product)=>{
+        
+    })
+
+    return array;
   }
 
+  async getByCategory(categoryID) {
+    var products = await this.db.once("value");
+    var array = [];
+    // console.log(products);
+    products.forEach((product) => {
+      product.child("category").forEach((item) => {;
+        if (item.val() == categoryID) {
+          console.log("match!!!");
+          array.push(product.val());
+        }
+      });
+    });
+    console.log(array);
+    return array;
+  }
 }
 
 module.exports = { Product };

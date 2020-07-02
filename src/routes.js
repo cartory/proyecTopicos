@@ -16,12 +16,6 @@ class MyRouter {
 
   loadRoutes() {
     this.router
-      //  PROMOS
-      .get("/promos", PromoController.all)
-      .post("/promos", PromoController.store)
-      .get("/promos/:id", PromoController.find)
-      .put("/promos/:id", PromoController.update)
-      .delete("/promos/:id", PromoController.destroy)
       //  CATEGORIES
       .get("/categories", CategoryController.all)
       .post("/categories", CategoryController.store)
@@ -46,8 +40,9 @@ class MyRouter {
       .get("/products/:id", ProductController.find)
       .put("/products/:id", ProductController.update)
       .delete("/products/:id", ProductController.destroy)
-      // PRODUCTS BY PROMO
+      // PRODUCTS BY PROMO & CATEGORY
       .get("/products/promo", ProductController.getByPromo)
+      .get("/products/category/:cat", ProductController.getByCategory)
       // PAYMENTS
       .get("/payments", PaymentController.all)
       .post("/payments", PaymentController.store)
