@@ -49,6 +49,8 @@ class MyRouter {
       .get("/payments/:id", PaymentController.find)
       .put("/payments/:id", PaymentController.update)
       .delete("/payments/:id", PaymentController.destroy)
+      // STRIPE
+      .post("/stripe/payment",PaymentController.createPayment)
       // PAYMENT->BILL
       .get("/payments/:id/bill", PaymentController.getBill)
       .post("/payments/:id/bill", PaymentController.newBill)
