@@ -21,7 +21,6 @@ class PaymentController {
     res.json(await Payment.instance.destroy(req.params.id));
   }
 
-
   static async newBill(req, res) {
     res.json(await Payment.instance.newBill(req.params.id, req.body));
   }
@@ -29,7 +28,6 @@ class PaymentController {
   static async getBill(req, res) {
     res.json(await Payment.instance.getBill(req.params.id));
   }
-
 }
 
 module.exports = { PaymentController };

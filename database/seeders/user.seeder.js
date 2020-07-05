@@ -24,7 +24,7 @@ class UserSeeder {
         phone: faker.random.number({
           min: 60000000,
           max: 7999999,
-        })
+        }),
       };
 
       var client = {
