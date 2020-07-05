@@ -32,8 +32,8 @@ class PaymentController {
 
   static async createPayment(req, res) {
 
-    try {
-
+    try{
+    
       const a = await stripe.tokens.create(
         {
           card: {
@@ -44,28 +44,30 @@ class PaymentController {
           },
         });
 
-      await stripe.customers.create({
+      const customer = await stripe.customers.create({
         email: req.body.email || "",
         source: a.id,
-        name : req.body.name,
-        phone : req.body.phone
+        name: req.body.name,
+        phone: req.body.phone
 
-      })
-        .then(customer => stripe.charges.create({
+      });
+
+      const charge = await stripe.charges.create({
           amount: req.body.amount * 100,
           description: req.body.description,
           currency: 'bob',
           customer: customer.id,
           receipt_email: req.body.email,
-        }))
-        .then(charge => res.json(charge));
-    } catch (err) {
-      console.log(err);
-    }
+        });
+
+        res.json(charge);
+      }catch(err){
+        console.log(err);
+      }
   }
 
 
-  
+
 
 
 }
