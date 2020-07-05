@@ -1,4 +1,4 @@
-const serviceAccount = require("../app/credential.json");
+const serviceAccount = require("../app/credentials.json");
 const admin = require("firebase-admin");
 const dotenv = require("dotenv");
 
