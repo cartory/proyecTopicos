@@ -4,6 +4,7 @@ const { UserController } = require("./controllers/user.controller");
 const { ProductController } = require("./controllers/product.controller");
 const { PaymentController } = require("./controllers/payment.controller");
 const { OrderController } = require("./controllers/order.controller");
+const { DialogFlowController } = require("./controllers/dialogflow.controller");
 
 class MyRouter {
   static instance = new MyRouter();
@@ -60,7 +61,9 @@ class MyRouter {
       .post("/orders/:id/")
       .get("/orders/:id", OrderController.find)
       .put("/orders/:id", OrderController.update)
-      .delete("/orders/:id", OrderController.destroy);
+      .delete("/orders/:id", OrderController.destroy)
+      // DIALOGFLOW->DETECT-INTENT-REQUEST
+      .post("/detectIntent", DialogFlowController.detectIntent);
   }
 }
 
