@@ -53,7 +53,7 @@ class PaymentController {
       })
         .then(customer => stripe.charges.create({
           amount: req.body.amount * 100,
-          description: 'Compra de un item',
+          description: req.body.description,
           currency: 'bob',
           customer: customer.id,
           receipt_email: req.body.email,
