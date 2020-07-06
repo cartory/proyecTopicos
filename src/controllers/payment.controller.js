@@ -64,24 +64,37 @@ class PaymentController {
   }
 
   static async paymentPaypal(req, res) {
+    const batchID = "Test_sdk_" + Math.random().toString(36).substring(7);
+    
     const request = new payoutsSdk.payouts.PayoutsPostRequest();
-    request.requestBody(req.body);
+    const body = req.body;
+    body.sender_batch_header.sender_batch_id = batchID;
+
+    request.requestBody(body);
     const response = await paypalClient.client().execute(request);
-    res.status(200).json(response);
+    console.log(response);
+    // 
+    const request2 = new payoutsSdk.payouts.PayoutsGetRequest(batchID);
+    request2.page(1);
+    request2.pageSize(10);
+    request2.totalRequired(true);
+
+    const response2 = await paypalClient.client().execute(request2);
+    res.status(200).json(response2);
   }
 
-  static async getPaypalPayout(req, res) {
-    const { batchID } = req.body;
+  // static async getPaypalPayout(req, res) {
+  //   const { batchID } = req.body;
 
-    const request = new payoutsSdk.payouts.PayoutsGetRequest(batchID);
-    //Optional, By default pageSize is set to 1000, page is set to 1
-    request.page(1);
-    request.pageSize(10);
-    request.totalRequired(true);
+  //   const request = new payoutsSdk.payouts.PayoutsGetRequest(batchID);
+  //   //Optional, By default pageSize is set to 1000, page is set to 1
+  //   request.page(1);
+  //   request.pageSize(10);
+  //   request.totalRequired(true);
 
-    const response = await paypalClient.client().execute(request);
-    res.status(200).json(response);
-  }
+  //   const response = await paypalClient.client().execute(request);
+  //   res.status(200).json(response);
+  // }
 }
 
 module.exports = { PaymentController };
