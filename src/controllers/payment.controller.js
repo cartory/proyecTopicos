@@ -2,6 +2,7 @@ const { Payment } = require("../models/Payment");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const paypalClient = require("../../config/paypal.client");
 const payoutsSdk = require("@paypal/payouts-sdk");
+
 class PaymentController {
   static async all(req, res) {
     res.json(await Payment.instance.all());
@@ -63,38 +64,22 @@ class PaymentController {
     }
   }
 
-  static async paymentPaypal(req, res) {
-    const batchID = "Test_sdk_" + Math.random().toString(36).substring(7);
-    
-    const request = new payoutsSdk.payouts.PayoutsPostRequest();
-    const body = req.body;
-    body.sender_batch_header.sender_batch_id = batchID;
-
-    request.requestBody(body);
-    const response = await paypalClient.client().execute(request);
-    console.log(response);
-    // 
-    const request2 = new payoutsSdk.payouts.PayoutsGetRequest(batchID);
-    request2.page(1);
-    request2.pageSize(10);
-    request2.totalRequired(true);
-
-    const response2 = await paypalClient.client().execute(request2);
-    res.status(200).json(response2);
+  static async createPaypalPayout(req, res) {
+    try {
+      const request = new payoutsSdk.payouts.PayoutsPostRequest();
+      req.body.sender_batch_header.sender_batch_id = Date.now().toString();
+      // console.log(req.body);
+      request.requestBody(req.body);
+      const response = await paypalClient.client().execute(request);
+      // console.log(response);
+      res.json(
+        await Payment.instance.getPaypalPayout(
+          response.result.batch_header.payout_batch_id
+      ));
+    } catch (err) {
+      res.json(err);
+    }
   }
-
-  // static async getPaypalPayout(req, res) {
-  //   const { batchID } = req.body;
-
-  //   const request = new payoutsSdk.payouts.PayoutsGetRequest(batchID);
-  //   //Optional, By default pageSize is set to 1000, page is set to 1
-  //   request.page(1);
-  //   request.pageSize(10);
-  //   request.totalRequired(true);
-
-  //   const response = await paypalClient.client().execute(request);
-  //   res.status(200).json(response);
-  // }
 }
 
 module.exports = { PaymentController };

@@ -51,9 +51,9 @@ class MyRouter {
       .put("/payments/:id", PaymentController.update)
       .delete("/payments/:id", PaymentController.destroy)
       // STRIPE
-      .post("/stripe/payment",PaymentController.createPayment)
+      .post("/stripe/payment", PaymentController.createPayment)
       // PAYPAL
-      .post("/paypal/payment", PaymentController.paymentPaypal)
+      .post("/paypal/payment", PaymentController.createPaypalPayout)
       // .post("/paypal/payout", PaymentController.getPaypalPayout)
       // PAYMENT->BILL
       .get("/payments/:id/bill", PaymentController.getBill)
