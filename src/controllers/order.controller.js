@@ -20,6 +20,7 @@ class OrderController {
   static async destroy(req, res) {
     res.json(await Order.instance.destroy(req.params.id));
   }
+
 }
 
 module.exports = { OrderController };

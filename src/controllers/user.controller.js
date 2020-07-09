@@ -1,4 +1,5 @@
 const { User } = require("../models/User");
+const { Order } = require("../models/Order");
 
 class UserController {
   static async all(req, res) {
@@ -42,6 +43,9 @@ class UserController {
   static async dropClient(req, res) {
     res.json(await User.instance.dropClient(req.params.id, req.params.cid));
   }
+
+ 
+
 }
 
 module.exports = { UserController };
