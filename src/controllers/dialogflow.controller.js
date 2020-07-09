@@ -1,5 +1,6 @@
 const { project_id } = require("../../app/credentials.json");
 const dialogflow = require("dialogflow");
+const { query } = require("express");
 
 const json = {
   session: "sessionPath",
@@ -17,7 +18,7 @@ const json = {
 class DialogFlowController {
   static async detectIntent(req, res, next) {
     const sessionClient = new dialogflow.SessionsClient();
-    const { query = "DEFAULT", sessionID = "DEFAULT"} = req.body;
+    const { query = "DEFAULT", sessionID = "DEFAULT" } = req.body;
 
     json.session = sessionClient.sessionPath(project_id, sessionID);
     json.queryInput.text.text = query;
@@ -31,14 +32,29 @@ class DialogFlowController {
       outputAudio,
       outputAudioConfig,
     };
+
     next();
   }
-  
 
   static async proccessAction(req, res) {
     const { queryResult, outputAudio, outputAudioConfig } = req.body;
+    switch (queryResult.action) {
+      case "get_bills":
+        // userID
+      break;
+      case "get_orders":
+        // userID
+      break;
+      // 
+      default:
+        break;
+    }
     res.json(queryResult);
   }
 }
 
 module.exports = { DialogFlowController };
+/**
+ * get_bills
+ * get_orders
+ */
