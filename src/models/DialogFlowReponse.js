@@ -9,7 +9,7 @@ class DialogFlowResponse {
   static instance = new DialogFlowResponse();
 
   static async filterOrderByUserClient(userID, clientID){
-    return await Order.getBills(userID, clientID);
+    return await Payment.getBills(userID, clientID);
   }
 
   static async filterPaymenMethodByUserClient(userID, clientID){
