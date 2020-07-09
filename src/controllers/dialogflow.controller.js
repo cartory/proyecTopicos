@@ -17,9 +17,9 @@ const json = {
 class DialogFlowController {
   static async detectIntent(req, res, next) {
     const sessionClient = new dialogflow.SessionsClient();
-    const { query = "DEFAULT" } = req.body;
+    const { query = "DEFAULT", sessionID = "DEFAULT"} = req.body;
 
-    json.session = sessionClient.sessionPath(project_id, Date.now().toString());
+    json.session = sessionClient.sessionPath(project_id, sessionID);
     json.queryInput.text.text = query;
 
     const { queryResult, outputAudio, outputAudioConfig } = (
