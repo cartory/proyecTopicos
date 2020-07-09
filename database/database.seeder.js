@@ -6,8 +6,7 @@ const { PaymentMethodSeeder } = require("./seeders/payment_method");
 process.on("exit", () => console.log("DATABASE SEEDED"));
 
 async function seedDatabase() {
-  await OrderSeeder.fake(3)
-
+  await PaymentMethodSeeder.fake(3);
   process.exit(0);
 }
 
