@@ -31,13 +31,9 @@ class DialogFlowController {
       outputAudio,
       outputAudioConfig,
     };
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> 6b8cedcc170201c16ab299d45d06ee4d74648949
     next();
   }
+  
 
   static async proccessAction(req, res) {
     const { queryResult, outputAudio, outputAudioConfig } = req.body;
