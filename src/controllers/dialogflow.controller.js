@@ -22,18 +22,20 @@ class DialogFlowController {
     json.session = sessionClient.sessionPath(project_id, Date.now().toString());
     json.queryInput.text.text = query;
 
-    const [
-      queryResult,
-      outputAudio,
-      outputAudioConfig,
-    ] = await sessionClient.detectIntent(json);
+    const { queryResult, outputAudio, outputAudioConfig } = (
+      await sessionClient.detectIntent(json)
+    )[0];
 
     req.body = {
       queryResult,
       outputAudio,
       outputAudioConfig,
     };
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 6b8cedcc170201c16ab299d45d06ee4d74648949
     next();
   }
 
