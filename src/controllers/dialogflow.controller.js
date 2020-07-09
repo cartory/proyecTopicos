@@ -1,6 +1,7 @@
 const { project_id } = require("../../app/credentials.json");
 const dialogflow = require("dialogflow");
 const { query } = require("express");
+const { DialogFlowResponse } = require("../models/DialogFlowReponse");
 
 const json = {
   session: "sessionPath",
@@ -38,18 +39,29 @@ class DialogFlowController {
 
   static async proccessAction(req, res) {
     const { queryResult, outputAudio, outputAudioConfig } = req.body;
+    var data = null;
     switch (queryResult.action) {
       case "get_bills":
-        // userID
-      break;
+        // userID, clientID
+        break;
       case "get_orders":
-        // userID
-      break;
-      // 
+        // userID, clientID
+        break;
+      //
       default:
         break;
     }
-    res.json(queryResult);
+    res.json({
+      fulfillmentText: queryResult.fulfillmentText,
+      action: {
+        name: queryResult.action,
+        parameters: queryResult.parameters,
+        data: data,
+      },
+      end_conversation: queryResult.diagnosticInfo != null,
+      outputAudioConfig: outputAudioConfig,
+      outputAudio: outputAudio,
+    });
   }
 }
 
