@@ -19,11 +19,6 @@ class Payment extends Model {
     return await this.db.child(paymentID).child(billPayment).once("value");
   }
 
-  //TODO 
-  static async getBills(userID, clientID) {
-    return [];
-  }
-
   async getPaypalPayout(payoutID) {
     try {
       const request = new payoutsSdk.payouts.PayoutsGetRequest(payoutID);

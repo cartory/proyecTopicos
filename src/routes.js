@@ -69,7 +69,7 @@ class MyRouter {
       .post("/intent", DialogFlowController.detectIntent, DialogFlowController.proccessAction)
 
 
-      .get('/test',(req,res)=>{res.json(Payment.getBills(req.body.userID,req.body.clientID));} );
+      .get('/test',(req,res)=>{res.json(Payment.instance.getBills(req.body.userID,req.body.clientID));} );
   }
 }
 
