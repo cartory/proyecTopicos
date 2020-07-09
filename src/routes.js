@@ -54,7 +54,6 @@ class MyRouter {
       .post("/stripe/payment", PaymentController.createPayment)
       // PAYPAL
       .post("/paypal/payment", PaymentController.createPaypalPayout)
-      // .post("/paypal/payout", PaymentController.getPaypalPayout)
       // PAYMENT->BILL
       .get("/payments/:id/bill", PaymentController.getBill)
       .post("/payments/:id/bill", PaymentController.newBill)
@@ -66,7 +65,7 @@ class MyRouter {
       .put("/orders/:id", OrderController.update)
       .delete("/orders/:id", OrderController.destroy)
       // DIALOGFLOW->DETECT-INTENT-REQUEST
-      .post("/detectIntent", DialogFlowController.detectIntent);
+      .post("/intent", DialogFlowController.detectIntent, DialogFlowController.proccessAction);
   }
 }
 

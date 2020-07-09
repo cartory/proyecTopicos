@@ -15,14 +15,30 @@ const json = {
 };
 
 class DialogFlowController {
-  static async detectIntent(req, res) {
+  static async detectIntent(req, res, next) {
     const sessionClient = new dialogflow.SessionsClient();
     const { query = "DEFAULT" } = req.body;
 
     json.session = sessionClient.sessionPath(project_id, Date.now().toString());
     json.queryInput.text.text = query;
 
-    res.status(200).json(await sessionClient.detectIntent(json));
+    const [
+      queryResult,
+      outputAudio,
+      outputAudioConfig,
+    ] = await sessionClient.detectIntent(json);
+
+    req.body = {
+      queryResult,
+      outputAudio,
+      outputAudioConfig,
+    };
+    next();
+  }
+
+  static async proccessAction(req, res) {
+    const { queryResult, outputAudio, outputAudioConfig } = req.body;
+    res.json(queryResult);
   }
 }
 

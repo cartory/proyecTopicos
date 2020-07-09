@@ -75,7 +75,8 @@ class PaymentController {
       res.json(
         await Payment.instance.getPaypalPayout(
           response.result.batch_header.payout_batch_id
-      ));
+        )
+      );
     } catch (err) {
       res.json(err);
     }
