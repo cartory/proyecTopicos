@@ -71,7 +71,7 @@ class PaymentController {
       // console.log(req.body);
       request.requestBody(req.body);
       const response = await paypalClient.client().execute(request);
-      // console.log(response);
+      console.log(response);
       res.json(
         await Payment.instance.getPaypalPayout(
           response.result.batch_header.payout_batch_id
