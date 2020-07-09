@@ -5,6 +5,7 @@ const { ProductController } = require("./controllers/product.controller");
 const { PaymentController } = require("./controllers/payment.controller");
 const { OrderController } = require("./controllers/order.controller");
 const { DialogFlowController } = require("./controllers/dialogflow.controller");
+const { Payment } = require("./models/Payment");
 
 class MyRouter {
   static instance = new MyRouter();
@@ -65,7 +66,11 @@ class MyRouter {
       .put("/orders/:id", OrderController.update)
       .delete("/orders/:id", OrderController.destroy)
       // DIALOGFLOW->DETECT-INTENT-REQUEST
-      .post("/intent", DialogFlowController.detectIntent, DialogFlowController.proccessAction);
+      .post(
+        "/intent",
+        DialogFlowController.detectIntent,
+        DialogFlowController.proccessAction
+      );
   }
 }
 
