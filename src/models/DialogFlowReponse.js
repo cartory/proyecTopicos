@@ -1,8 +1,9 @@
 const { Order } = require("../models/Order");
+const { PaymentMethod } = require("./PaymentMethod");
 class DialogFlowResponse {
   static instance = new DialogFlowResponse();
 
-  static async filterOrderByUserClient(userID, clientID){
+  static async filterOrderByUserClient(userID, clientID) {
     return await Order.instance.getBills(userID, clientID);
   }
 

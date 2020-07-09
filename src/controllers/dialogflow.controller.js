@@ -42,7 +42,10 @@ class DialogFlowController {
 
     switch (queryResult.action) {
       case "get_bills":
-          data = await DialogFlowResponse.filterOrderByUserClient("-MAyGL1jK-Q8piBh_vZE","cliendID");
+        data = await DialogFlowResponse.filterOrderByUserClient(
+          "-MAyGL1jK-Q8piBh_vZE",
+          "cliendID"
+        );
         break;
       case "get_orders":
         // userID, clientID
@@ -104,7 +107,7 @@ class DialogFlowController {
         console.log(queryResult.parameters);
         break;
       default:
-          console.log("ENTRANDO");
+        console.log("ENTRANDO");
         break;
     }
     res.json({
@@ -116,7 +119,7 @@ class DialogFlowController {
       },
       end_conversation: queryResult.diagnosticInfo != null,
       outputAudioConfig: outputAudioConfig,
-      //outputAudio: outputAudio,
+      // outputAudio: outputAudio,
     });
   }
 }
