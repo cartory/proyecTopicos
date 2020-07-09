@@ -9,7 +9,7 @@ class PaymentMethod extends Model {
   }
 
   static async getPaymenMethod(userID, clientID) {
-    var payment_methods = await this.db.once("value");
+    var payment_methods = await this.all();
     var array = [];
     payment_methods.forEach((order) => {
       var uid = order.child("userID").val();

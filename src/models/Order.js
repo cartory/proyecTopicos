@@ -1,5 +1,5 @@
 const { Model } = require("../../config/Model");
-const {Payment} = require("../models/Payment");
+const { Payment } = require("../models/Payment");
 const collection = "orders";
 
 
@@ -10,26 +10,34 @@ class Order extends Model {
     super(collection);
   }
 
-  static async getBills(userID, clientID) {
+  async getBills(userID, clientID) {
+
     var orders = await this.all();
     var array = [];
     orders.forEach((order) => {
       var uid = order.child("userID").val();
       var cid = order.child("clientID").val();
       if (uid === userID && cid === clientID) {
-        array.push(order.child());
+        var k =  order.ref.path.pieces_[1];
+        array.push(k);
       }
     });
 
-    const payments = Payment.instance.all();
 
-    payments.forEach(payment => {
-        array.forEach(order=>{
-             
-        });
+    const payments = await Payment.instance.all();
+    var answer = [];
+
+    payments.forEach((payment)=>{
+      var p = payment.val();
+       array.forEach((order)=>{
+          if(order===p.orderID){
+            answer.push(p.bill);
+          }    
+          
+       })
     });
     
-    return array;
+    return answer;
   }
 
   async getPreviousOrders(userID, clientID) {

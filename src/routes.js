@@ -66,10 +66,7 @@ class MyRouter {
       .put("/orders/:id", OrderController.update)
       .delete("/orders/:id", OrderController.destroy)
       // DIALOGFLOW->DETECT-INTENT-REQUEST
-      .post("/intent", DialogFlowController.detectIntent, DialogFlowController.proccessAction)
-
-
-      .get('/test',(req,res)=>{res.json(Payment.instance.getBills(req.body.userID,req.body.clientID));} );
+      .post("/intent", DialogFlowController.detectIntent, DialogFlowController.proccessAction);
   }
 }
 

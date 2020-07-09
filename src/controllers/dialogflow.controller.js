@@ -40,15 +40,16 @@ class DialogFlowController {
   static async proccessAction(req, res) {
     const { queryResult, outputAudio, outputAudioConfig } = req.body;
     var data = null;
+
     switch (queryResult.action) {
       case "get_bills":
-        // userID, clientID
+          data = await DialogFlowResponse.filterOrderByUserClient("-MAyGL1jK-Q8piBh_vZE","cliendID");
         break;
       case "get_orders":
         // userID, clientID
         break;
-      //
       default:
+          console.log("ENTRANDO");
         break;
     }
     res.json({
@@ -60,7 +61,7 @@ class DialogFlowController {
       },
       end_conversation: queryResult.diagnosticInfo != null,
       outputAudioConfig: outputAudioConfig,
-      outputAudio: outputAudio,
+      //outputAudio: outputAudio,
     });
   }
 }
