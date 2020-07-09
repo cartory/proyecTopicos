@@ -1,6 +1,5 @@
-const { project_id } = require("../../app/credentials.json");
 const dialogflow = require("dialogflow");
-const { query } = require("express");
+const { project_id } = require("../../app/credentials.json");
 const { DialogFlowResponse } = require("../models/DialogFlowReponse");
 
 const json = {
@@ -46,8 +45,63 @@ class DialogFlowController {
         break;
       case "get_orders":
         // userID, clientID
+        data = await DialogFlowResponse.getPreviousOrders(
+          "-MAyGL1jK-Q8piBh_vZE",
+          "cliendID"
+        );
         break;
-      //
+      case "get_payment_methods":
+        // userID, clientID
+        data = await DialogFlowResponse.getPaymentsMethods(
+          "-MAyGL1jK-Q8piBh_vZE",
+          "cliendID"
+        );
+        break;
+      case "edit_payment_method":
+        // registrar = string, eliminar = string
+        console.log("redirect view payment method");
+        break;
+      case "manage_order":
+        // registrar = string, eliminar = string => FLUTTER
+        console.log(queryResult.parameters);
+        // FLUTTER LLAMARÁ DIRECTAMENTE A LA RUTA PARA REGISTRAR&ELIMINAR
+        break;
+      case "edit_product":
+        // cantidad = number, producto = string => FLUTTER
+        console.log(queryResult.parameters);
+        break;
+      case "delete_product":
+        // producto = string => FLUTTER
+        console.log(queryResult.parameters);
+        break;
+      //  REALIZAR UN PEDIDO
+      case "get_category":
+        // category = string =>
+        console.log(queryResult.parameters);
+        /**
+         * Si la llamada es desde el homepage se hará la consulta
+         * sino la filtrada se aplicará en FLUTTER
+         */
+        break;
+      case "get_promo":
+        console.log("redirect/update view");
+        /**
+         * Si es el primer filtro aplicado se hará la consulta
+         * sino la filtrada se aplicará en FLUTTER
+         */
+        break;
+      case "get_name":
+        //  producto = string
+        console.log("redirect/update view");
+        /**
+         * Si es el primer filtro aplicado se hará la conulta
+         * sino la filtrada se aplicará en FLUTTER
+         */
+        break;
+      case "get_product":
+        //  producto = string, cantidad = number => FLUTTER
+        console.log(queryResult.parameters);
+        break;
       default:
         break;
     }
@@ -60,7 +114,7 @@ class DialogFlowController {
       },
       end_conversation: queryResult.diagnosticInfo != null,
       outputAudioConfig: outputAudioConfig,
-      outputAudio: outputAudio,
+      // outputAudio: outputAudio,
     });
   }
 }
@@ -69,4 +123,13 @@ module.exports = { DialogFlowController };
 /**
  * get_bills
  * get_orders
+ * get_payment_methods
+ * edit_payment_method
+ * manage_order
+ * edit_product
+ * delete_product
+ * get_category
+ * get_promo
+ * get_name
+ * get_product
  */
