@@ -1,25 +1,27 @@
-const { Category } = require("../models/category");
+
+const { category } = require("../models/Category");
 
 class CategoryController {
   static async all(req, res) {
-    res.json(await Category.instance.all());
+    res.json(await category.all());
   }
 
   static async find(req, res) {
-    res.json(await Category.instance.find(req.params.id));
+    res.json(await category.find(req.params.id));
   }
 
   static async store(req, res) {
-    res.json(await Category.instance.create(req.body));
+    res.json(await category.create(req.body));
   }
 
   static async update(req, res) {
-    res.json(await Category.instance.update(req.params.id, req.body));
+    res.json(await category.update(req.params.id, req.body));
   }
 
   static async destroy(req, res) {
-    res.json(await Category.instance.destroy(req.params.id));
+    res.json(await category.destroy(req.params.id));
   }
 }
+
 
 module.exports = { CategoryController };

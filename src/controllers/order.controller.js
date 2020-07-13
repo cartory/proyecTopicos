@@ -1,24 +1,25 @@
-const { Order } = require("../models/Order");
+
+const { order } = require("../models/Order");
 
 class OrderController {
   static async all(req, res) {
-    res.json(await Order.instance.all());
+    res.json(await order.all());
   }
 
   static async find(req, res) {
-    res.json(await Order.instance.find(req.params.id));
+    res.json(await order.find(req.params.id));
   }
 
   static async store(req, res) {
-    res.json(await Order.instance.create(req.body));
+    res.json(await order.create(req.body));
   }
 
   static async update(req, res) {
-    res.json(await Order.instance.update(req.params.id, req.body));
+    res.json(await order.update(req.params.id, req.body));
   }
 
   static async destroy(req, res) {
-    res.json(await Order.instance.destroy(req.params.id));
+    res.json(await order.destroy(req.params.id));
   }
 
 }

@@ -1,9 +1,9 @@
+
 const { Model } = require("../../config/Model");
 const collection = "users";
 const clients = "clients";
 
 class User extends Model {
-  static instance = new User();
 
   constructor() {
     super(collection);
@@ -32,4 +32,5 @@ class User extends Model {
   }
 }
 
-module.exports = { User };
+const user = new User();
+module.exports = { user };

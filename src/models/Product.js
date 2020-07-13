@@ -1,8 +1,8 @@
+
 const { Model } = require("../../config/Model");
 const collection = "products";
 
 class Product extends Model {
-  static instance = new Product();
 
   constructor() {
     super(collection);
@@ -51,6 +51,7 @@ class Product extends Model {
     });
     return array;
   }
-}
 
-module.exports = { Product };
+}
+const product = new Product();
+module.exports = { product };

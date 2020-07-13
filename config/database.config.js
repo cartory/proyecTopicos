@@ -1,13 +1,12 @@
+//'use strict'
 const serviceAccount = require("../app/credentials.json");
 const admin = require("firebase-admin");
-const dotenv = require("dotenv");
 
-dotenv.config();
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-  databaseURL: process.env.FIREBASE_DATABASE_URL,
+  storageBucket: "proyectopicos-efc3c.appspot.com",
+  databaseURL: "https://proyectopicos-efc3c.firebaseio.com",
 });
 
 module.exports = { database: admin.database() };

@@ -1,14 +1,12 @@
+'use strict'
 const { Router } = require("express");
 const { CategoryController } = require("./controllers/category.controller");
 const { UserController } = require("./controllers/user.controller");
 const { ProductController } = require("./controllers/product.controller");
 const { PaymentController } = require("./controllers/payment.controller");
 const { OrderController } = require("./controllers/order.controller");
-const { DialogFlowController } = require("./controllers/dialogflow.controller");
-const {Payment} = require("./models/Payment");
 
 class MyRouter {
-  static instance = new MyRouter();
 
   constructor() {
     this.router = Router();
@@ -52,7 +50,7 @@ class MyRouter {
       .put("/payments/:id", PaymentController.update)
       .delete("/payments/:id", PaymentController.destroy)
       // STRIPE
-      .post("/stripe/payment", PaymentController.createPayment)
+      .post("/stripe/payment", PaymentController.createpayment)
       // PAYPAL
       .post("/paypal/payment", PaymentController.createPaypalPayout)
       // PAYMENT->BILL
@@ -64,10 +62,8 @@ class MyRouter {
       .post("/orders/:id/")
       .get("/orders/:id", OrderController.find)
       .put("/orders/:id", OrderController.update)
-      .delete("/orders/:id", OrderController.destroy)
-      // DIALOGFLOW->DETECT-INTENT-REQUEST
-      .post("/intent", DialogFlowController.detectIntent, DialogFlowController.proccessAction);
+      .delete("/orders/:id", OrderController.destroy);
   }
 }
-
-module.exports = { MyRouter };
+const myRouter = new MyRouter();
+module.exports = { myRouter };

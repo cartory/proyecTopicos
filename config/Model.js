@@ -1,3 +1,4 @@
+//'use strict'
 const { database } = require("./database.config");
 
 class Model {

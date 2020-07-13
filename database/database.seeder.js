@@ -1,3 +1,4 @@
+/*
 const { CategorySeeder } = require("./seeders/category.seeder");
 const { ProductSeeder } = require("./seeders/product.seeder");
 const { OrderSeeder } = require("./seeders/order.seeder");
@@ -10,4 +11,4 @@ async function seedDatabase() {
   process.exit(0);
 }
 
-seedDatabase();
+seedDatabase();*/

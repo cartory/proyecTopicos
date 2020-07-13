@@ -1,37 +1,38 @@
-const { Product } = require("../models/Product");
+
+const { product } = require("../models/Product");
 
 class ProductController {
   static async all(req, res) {
-    res.json(await Product.instance.all());
+    res.json(await product.all());
   }
 
   static async find(req, res) {
-    res.json(await Product.instance.find(req.params.id));
+    res.json(await product.find(req.params.id));
   }
 
   static async store(req, res) {
-    res.json(await Product.instance.create(req.body));
+    res.json(await product.create(req.body));
   }
 
   static async update(req, res) {
-    res.json(await Product.instance.update(req.params.id, req.body));
+    res.json(await product.update(req.params.id, req.body));
   }
 
   static async destroy(req, res) {
-    res.json(await Product.instance.destroy(req.params.id));
+    res.json(await product.destroy(req.params.id));
   }
 
   static async getByPromo(req, res) {
     console.log("WASSAAA");
-    res.json(await Product.instance.getByPromo());
+    res.json(await product.getByPromo());
   }
 
   static async getByCategory(req, res) {
-    res.json(await Product.instance.getByCategory(req.params.cat));
+    res.json(await product.getByCategory(req.params.cat));
   }
 
   static async getByName(req, res) {
-    res.json(await Product.instance.getByName(req.params.name));
+    res.json(await product.getByName(req.params.name));
   }
 }
 

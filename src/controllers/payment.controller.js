@@ -1,38 +1,39 @@
-const { Payment } = require("../models/Payment");
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
+const { payment } = require("../models/Payment");
+const stripe = require("stripe")("sk_test_51H1KvfKPh8MroBE9kkIQJb01LaO1SL8Mc4avwXVQyhwzGqscW2Yvg7byQ0SZYBMzynPvRHfPQXrKjegtEvleV4PS00qvnrYzwy");
 const paypalClient = require("../../config/paypal.client");
 const payoutsSdk = require("@paypal/payouts-sdk");
 
 class PaymentController {
   static async all(req, res) {
-    res.json(await Payment.instance.all());
+    res.json(await payment.all());
   }
 
   static async find(req, res) {
-    res.json(await Payment.instance.find(req.params.id));
+    res.json(await payment.find(req.params.id));
   }
 
   static async store(req, res) {
-    res.json(await Payment.instance.create(req.body));
+    res.json(await payment.create(req.body));
   }
 
   static async update(req, res) {
-    res.json(await Payment.instance.update(req.params.id, req.body));
+    res.json(await payment.update(req.params.id, req.body));
   }
 
   static async destroy(req, res) {
-    res.json(await Payment.instance.destroy(req.params.id));
+    res.json(await payment.destroy(req.params.id));
   }
 
   static async newBill(req, res) {
-    res.json(await Payment.instance.newBill(req.params.id, req.body));
+    res.json(await payment.newBill(req.params.id, req.body));
   }
 
   static async getBill(req, res) {
-    res.json(await Payment.instance.getBill(req.params.id));
+    res.json(await payment.getBill(req.params.id));
   }
 
-  static async createPayment(req, res) {
+  static async createpayment(req, res) {
     try {
       const a = await stripe.tokens.create({
         card: {
@@ -73,7 +74,7 @@ class PaymentController {
       const response = await paypalClient.client().execute(request);
       console.log(response);
       res.json(
-        await Payment.instance.getPaypalPayout(
+        await payment.getPaypalPayout(
           response.result.batch_header.payout_batch_id
         )
       );

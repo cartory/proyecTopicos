@@ -1,10 +1,10 @@
+
 const { Model } = require("../../config/Model");
 const { Payment } = require("../models/Payment");
 const collection = "orders";
 
 
 class Order extends Model {
-  static instance = new Order();
 
   constructor() {
     super(collection);
@@ -55,4 +55,5 @@ class Order extends Model {
   }
 }
 
-module.exports = { Order };
+const order = new Order();
+module.exports = { order };

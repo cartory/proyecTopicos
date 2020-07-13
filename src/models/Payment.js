@@ -1,3 +1,4 @@
+
 const { Model } = require("../../config/Model");
 const collection = "payments";
 const billPayment = "bill";
@@ -5,7 +6,6 @@ const paypalClient = require("../../config/paypal.client");
 const payoutsSdk = require("@paypal/payouts-sdk");
 
 class Payment extends Model {
-  static instance = new Payment();
 
   constructor() {
     super(collection);
@@ -33,4 +33,5 @@ class Payment extends Model {
   }
 }
 
-module.exports = { Payment };
+const payment = new Payment();
+module.exports = { payment };
