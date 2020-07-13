@@ -41,6 +41,7 @@ class Product extends Model {
     var products = await this.db.once("value");
     var array = [];
     products.forEach((product) => {
+      product.ref.parent.once('value');
       if (product.child("name").val().toLowerCase().includes(name)) {
         array.push(product.val());
       } else if (

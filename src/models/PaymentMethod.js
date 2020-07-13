@@ -8,7 +8,7 @@ class PaymentMethod extends Model {
     super(collection);
   }
 
-  static async getPaymenMethod(userID, clientID) {
+  async getPaymentMethods(userID, clientID) {
     var payment_methods = await this.all();
     var array = [];
     payment_methods.forEach((order) => {
