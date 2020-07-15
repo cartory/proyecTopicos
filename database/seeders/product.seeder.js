@@ -1,4 +1,4 @@
-const { Product } = require("../../src/models/Product");
+const { product } = require("../../src/models/Product");
 const faker = require("faker");
 
 const categories = [
@@ -27,7 +27,7 @@ class ProductSeeder {
       promo: null,
     };
 
-    await Product.instance.create(newProduct);
+    await product.create(newProduct);
   }
 
   static addDays(dateObj, numDays) {
@@ -57,7 +57,7 @@ class ProductSeeder {
         },
       };
 
-      await Product.instance.create(newProduct);
+      await product.create(newProduct);
     }
   }
 }

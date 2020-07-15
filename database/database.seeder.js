@@ -7,8 +7,7 @@ const { PaymentMethodSeeder } = require("./seeders/payment_method");
 process.on("exit", () => console.log("DATABASE SEEDED"));
 
 async function seedDatabase() {
-  // await PaymentMethodSeeder.fakeStripe(3);
-  // await PaymentMethodSeeder.fakePaypal(3);
+    await ProductSeeder.fake(5);
   process.exit(0);
 }
 

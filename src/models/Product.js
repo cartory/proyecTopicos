@@ -42,10 +42,10 @@ class Product extends Model {
     var array = [];
     products.forEach((product) => {
       product.ref.parent.once('value');
-      if (product.child("name").val().toLowerCase().includes(name)) {
+      if (product.child("name").val().toLowerCase().includes(name.toLowerCase())) {
         array.push(product.val());
       } else if (
-        product.child("description").val().toLowerCase().includes(name)
+        product.child("description").val().toLowerCase().includes(name.toLowerCase())
       ) {
         array.push(product.val());
       }
