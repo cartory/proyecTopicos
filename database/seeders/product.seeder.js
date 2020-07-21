@@ -2,24 +2,20 @@ const { product } = require("../../src/models/Product");
 const faker = require("faker");
 
 const categories = [
-  "-MAxNQyICr9nP2SQvM3v",
-  "-MAxNXZRaXXR7KNb9WGe",
-  "-MAxNjmGpdCx8no0XtKv",
-  "-MAxNxC-Jf-zpgBC620U",
-  "-MAxOWli2SHbL0MscC7z",
-  "-MAy4W0oZgjOPtPSlJNS",
-  "-MAy4e37HJTZV68E8tqE",
-  "-MAy4kiIXDGHP08BWX3J",
-  "-MAy4srCXcBs7ru2Bhbh",
-  "-MAy5_Hr5gEH6bmiCPvW",
+  "-MAxNQyICr9nP2SQvM3v", // 0  Carnes
+  "-MAxNXZRaXXR7KNb9WGe", // 1 lácteos
+  "-MAxNjmGpdCx8no0XtKv", // 2 Limpieza
+  "-MAxNxC-Jf-zpgBC620U", // 3 Verduras
+  "-MAxOWli2SHbL0MscC7z", // 4 Pasteleria
+  "-MAy4W0oZgjOPtPSlJNS", // 5 Frutas
+  "-MAy4e37HJTZV68E8tqE", // 6 Panaderia
+  "-MAy4kiIXDGHP08BWX3J", // 7 Nacional
+  "-MAy4srCXcBs7ru2Bhbh", // 8 Importados
+  "-MAy5_Hr5gEH6bmiCPvW", // 9 Bebidas
 ];
 
 
 class ProductSeeder {
-
-  
-
-
 
   static async seed() {
 

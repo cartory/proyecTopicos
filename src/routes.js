@@ -1,13 +1,15 @@
-'use strict'
+"use strict";
 const { Router } = require("express");
 const { CategoryController } = require("./controllers/category.controller");
 const { UserController } = require("./controllers/user.controller");
 const { ProductController } = require("./controllers/product.controller");
 const { PaymentController } = require("./controllers/payment.controller");
 const { OrderController } = require("./controllers/order.controller");
+const {
+  PaymentMethodController,
+} = require("./controllers/payment_method.controller");
 
 class MyRouter {
-
   constructor() {
     this.router = Router();
     this.loadRoutes();
@@ -62,7 +64,13 @@ class MyRouter {
       .post("/orders/:id/")
       .get("/orders/:id", OrderController.find)
       .put("/orders/:id", OrderController.update)
-      .delete("/orders/:id", OrderController.destroy);
+      .delete("/orders/:id", OrderController.destroy)
+      // PAYMENTMETHODS
+      .get("/paymentMethods", PaymentMethodController.all)
+      .update("paymentMethods/:id", PaymentMethodController.update)
+      .delete("/paymentMethods/:id", PaymentMethodController.destroy)
+      .get("/paymentMethods/:uid/:cid", PaymentMethodController.find)
+      .post("/paymentMethods/:uid/:cid", PaymentMethodController.store);
   }
 }
 const myRouter = new MyRouter();

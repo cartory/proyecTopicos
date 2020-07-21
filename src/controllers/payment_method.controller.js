@@ -1,7 +1,14 @@
-
 const { paymentMethod } = require("../models/PaymentMethod");
 
 class PaymentMethodController {
+  static async find(req, res) {
+    res.json(await paymentMethod.getPaymentMethods(req.uid, req.cid));
+  }
+
+  static async all(req, res) 
+  {
+    res.json(await paymentMethod.all());
+  }
 
   static async store(req, res) {
     res.json(await paymentMethod.create(req.body));
