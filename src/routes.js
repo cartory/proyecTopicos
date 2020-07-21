@@ -67,7 +67,7 @@ class MyRouter {
       .put("/paymentMethods/:id", PaymentMethodController.update)
       .delete("/paymentMethods/:id", PaymentMethodController.destroy)
       .get("/paymentMethods/:uid/:cid", PaymentMethodController.find)
-      .post("/paymentMethods/:uid/:cid", PaymentMethodController.store);
+      // .post("/paymentMethods/:uid/:cid", PaymentMethodController.store);
   }
 }
 const myRouter = new MyRouter();
