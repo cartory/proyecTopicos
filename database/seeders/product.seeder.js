@@ -1,33 +1,109 @@
-const { Product } = require("../../src/models/Product");
+const { product } = require("../../src/models/Product");
 const faker = require("faker");
 
 const categories = [
-  "-MAxNQyICr9nP2SQvM3v",
-  "-MAxNXZRaXXR7KNb9WGe",
-  "-MAxNjmGpdCx8no0XtKv",
-  "-MAxNxC-Jf-zpgBC620U",
-  "-MAxOWli2SHbL0MscC7z",
-  "-MAy4W0oZgjOPtPSlJNS",
-  "-MAy4e37HJTZV68E8tqE",
-  "-MAy4kiIXDGHP08BWX3J",
-  "-MAy4srCXcBs7ru2Bhbh",
-  "-MAy5_Hr5gEH6bmiCPvW",
+  "-MAxNQyICr9nP2SQvM3v", // 0  Carnes
+  "-MAxNXZRaXXR7KNb9WGe", // 1 lácteos
+  "-MAxNjmGpdCx8no0XtKv", // 2 Limpieza
+  "-MAxNxC-Jf-zpgBC620U", // 3 Verduras
+  "-MAxOWli2SHbL0MscC7z", // 4 Pasteleria
+  "-MAy4W0oZgjOPtPSlJNS", // 5 Frutas
+  "-MAy4e37HJTZV68E8tqE", // 6 Panaderia
+  "-MAy4kiIXDGHP08BWX3J", // 7 Nacional
+  "-MAy4srCXcBs7ru2Bhbh", // 8 Importados
+  "-MAy5_Hr5gEH6bmiCPvW", // 9 Bebidas
 ];
 
 class ProductSeeder {
   static async seed() {
-    const newProduct = {
-      code: "??",
-      name: "???",
-      description: "???",
-      url_photo: "???",
-      stock: 1,
-      price: 1,
-      category: ["???"],
-      promo: null,
-    };
+    var list = [
+      {
+        code: faker.random.alphaNumeric(10),
+        name: "Pan Francés",
+        image_url: "https://www.ketal.com.bo/image/cache/catalog/product/80178821-550x550.jpg",
+        description: `Pan Ketal Francés Unidad`,
+        stock: faker.random.number(30) + 1,
+        price: faker.random.number(1) + 0.5,
+        category: [categories[6]],
+        promo: {
+          discount: faker.random.number({ min: 0, max: 100 }) / 100,
+          endDate: this.addDays(
+            new Date(),
+            faker.random.number({ min: 0, max: 7 })
+          ).getTime(),
+        },
+      },
+      {
+        code: faker.random.alphaNumeric(10),
+        name: "ALFAJOR",
+        image_url: "https://www.ketal.com.bo/image/cache/catalog/product/56060001-550x550.jpg",
+        description: `ALFAJOR KETAL 6UN MAICENA`,
+        stock: faker.random.number(10) + 1,
+        price: faker.random.number(6) + 0.99,
+        category: [categories[6], categories[4]],
+        promo: {
+          discount: faker.random.number({ min: 0, max: 100 }) / 100,
+          endDate: this.addDays(
+            new Date(),
+            faker.random.number({ min: 0, max: 7 })
+          ).getTime(),
+        },
+      },
 
-    await Product.instance.create(newProduct);
+      {
+        code: faker.random.alphaNumeric(10),
+        name: "Pan Sarna",
+        image_url: "https://www.ketal.com.bo/image/cache/catalog/product/80178824-550x550.jpg",
+        description: `Pan Ketal Sarna Unidad`,
+        stock: faker.random.number(23) + 1,
+        price: faker.random.number(1) + 0.7,
+        category: [categories[6],],
+        promo: {
+          discount: faker.random.number({ min: 0, max: 100 }) / 100,
+          endDate: this.addDays(
+            new Date(),
+            faker.random.number({ min: 0, max: 7 })
+          ).getTime(),
+        },
+      },
+
+      {
+        code: faker.random.alphaNumeric(10),
+        name: "Pan Molde",
+        image_url: "https://www.ketal.com.bo/image/cache/catalog/product/28030346-550x550.jpg",
+        description: `PAN CRIS MOLDE BLANCO`,
+        stock: faker.random.number(13) + 1,
+        price: faker.random.number(8) + 0.99,
+        category: [categories[6]],
+        promo: {
+          discount: faker.random.number({ min: 0, max: 100 }) / 100,
+          endDate: this.addDays(
+            new Date(),
+            faker.random.number({ min: 0, max: 7 })
+          ).getTime(),
+        },
+      },
+      {
+        code: faker.random.alphaNumeric(10),
+        name: "Pan Negro  ",
+        image_url: "https://www.ketal.com.bo/image/cache/catalog/product/80190264-550x550.jpg",
+        description: `Pan Ketal Negro Por Unidad`,
+        stock: faker.random.number(65) + 1,
+        price: faker.random.number(1) + 0.33,
+        category: [categories[6]],
+        promo: {
+          discount: faker.random.number({ min: 0, max: 100 }) / 100,
+          endDate: this.addDays(
+            new Date(),
+            faker.random.number({ min: 0, max: 7 })
+          ).getTime(),
+        },
+      },
+    ];
+
+    list.forEach(async function (item) {
+      await product.create(item);
+    });
   }
 
   static addDays(dateObj, numDays) {
