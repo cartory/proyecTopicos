@@ -1,5 +1,6 @@
 
 const { Model } = require("../../config/Model");
+const { user } = require("./User");
 const collection = "payment_methods";
 
 class PaymentMethod extends Model {
@@ -14,10 +15,13 @@ class PaymentMethod extends Model {
     payment_methods.forEach((order) => {
       var uid = order.child("userID").val();
       var cid = order.child("clientID").val();
-      if (uid === userID && cid === clientID) {
+      console.log(uid, userID);
+      console.log(cid, clientID);
+      if (uid == userID && cid == clientID) {
         array.push(order);
       }
     });
+    console.log(array);
     return array;
   }
 }
