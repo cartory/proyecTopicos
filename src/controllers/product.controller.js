@@ -23,7 +23,6 @@ class ProductController {
   }
 
   static async getByPromo(req, res) {
-    console.log("WASSAAA");
     res.json(await product.getByPromo());
   }
 

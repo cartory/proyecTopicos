@@ -1,4 +1,3 @@
-
 const { Model } = require("../../config/Model");
 const collection = "payments";
 const billPayment = "bill";
@@ -6,7 +5,6 @@ const paypalClient = require("../../config/paypal.client");
 const payoutsSdk = require("@paypal/payouts-sdk");
 
 class Payment extends Model {
-
   constructor() {
     super(collection);
   }

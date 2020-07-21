@@ -1,10 +1,8 @@
-
 const { Model } = require("../../config/Model");
 const { Payment } = require("../models/Payment");
 const collection = "orders";
 
 class Order extends Model {
-
   constructor() {
     super(collection);
   }
@@ -49,8 +47,6 @@ class Order extends Model {
     });
     return array;
   }
-
-
 }
 
 const order = new Order();

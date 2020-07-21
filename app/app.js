@@ -1,6 +1,6 @@
 
 //'use strict' 
-//const { myRouter } = require("../src/routes");
+const { myRouter } = require("../src/routes");
 
 const express = require("express");
 const morgan = require("morgan");
@@ -21,7 +21,7 @@ class App {
   }
 
   routes() {
-    //this.app.use("/api", myRouter.router);
+    this.app.use("/api", myRouter.router);
     this.app.get("/", (req, res) => {
       res.send("<h1>Hello from proyecTopicos!!</h1>");
     });

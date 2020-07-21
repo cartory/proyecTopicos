@@ -1,4 +1,3 @@
-
 const { user } = require("../models/User");
 
 class UserController {
@@ -31,9 +30,7 @@ class UserController {
   }
 
   static async setClient(req, res) {
-    res.json(
-      await user.setClient(req.params.id, req.params.cid, req.body)
-    );
+    res.json(await user.setClient(req.params.id, req.params.cid, req.body));
   }
 
   static async newClient(req, res) {
@@ -43,9 +40,6 @@ class UserController {
   static async dropClient(req, res) {
     res.json(await user.dropClient(req.params.id, req.params.cid));
   }
-
- 
-
 }
 
 module.exports = { UserController };
