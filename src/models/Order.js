@@ -1,6 +1,7 @@
 
 const { Model } = require("../../config/Model");
 const { Payment } = require("../models/Payment");
+const { product } = require("../models/Product");
 const collection = "orders";
 
 class Order extends Model {
@@ -49,6 +50,13 @@ class Order extends Model {
     });
     return array;
   }
+
+  async saveOrder(order) {
+
+    
+  }
+
+
 }
 
 const order = new Order();

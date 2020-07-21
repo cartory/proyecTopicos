@@ -11,7 +11,7 @@ class OrderController {
   }
 
   static async store(req, res) {
-    res.json(await order.create(req.body));
+    res.json(await order.saveOrder(req.body));
   }
 
   static async update(req, res) {
@@ -21,6 +21,7 @@ class OrderController {
   static async destroy(req, res) {
     res.json(await order.destroy(req.params.id));
   }
+
 
 }
 

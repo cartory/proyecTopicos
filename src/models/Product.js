@@ -12,13 +12,14 @@ class Product extends Model {
     var products = await this.db.once("value");
     var array = [];
     products.forEach((product) => {
+      var p = product.val();
+      p.id = product.key;
       let d = new Date(product.child("promo").child("endDate").val());
       let t = new Date();
       if (t <= d) {
-        array.push(product);
+        array.push(p);
       }
     });
-
     return array;
   }
 
@@ -26,14 +27,14 @@ class Product extends Model {
     var products = await this.db.once("value");
     var array = [];
     products.forEach((product) => {
+      var p = product.val();
+      p.id = product.key;
       product.child("category").forEach((item) => {
         if (item.val() == categoryID) {
-          console.log("match!!!");
-          array.push(product.val());
+          array.push(p);
         }
       });
     });
-    console.log(array);
     return array;
   }
 
@@ -41,13 +42,14 @@ class Product extends Model {
     var products = await this.db.once("value");
     var array = [];
     products.forEach((product) => {
-      product.ref.parent.once('value');
+      var p = product.val();
+      p.id = product.key;
       if (product.child("name").val().toLowerCase().includes(name.toLowerCase())) {
-        array.push(product.val());
+        array.push(p);
       } else if (
         product.child("description").val().toLowerCase().includes(name.toLowerCase())
       ) {
-        array.push(product.val());
+        array.push(p);
       }
     });
     return array;
