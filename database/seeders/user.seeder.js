@@ -1,3 +1,4 @@
+/*
 const { User } = require("../../src/models/User");
 const faker = require("faker");
 class UserSeeder {
@@ -47,3 +48,4 @@ class UserSeeder {
 }
 
 module.exports = { UserSeeder };
+*/

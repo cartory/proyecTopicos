@@ -1,3 +1,4 @@
+/*
 const { Payment } = require("../../src/models/Payment");
 const faker = require("faker");
 
@@ -57,3 +58,4 @@ class PaymentSeeder {
 }
 
 module.exports = { PaymentSeeder };
+*/

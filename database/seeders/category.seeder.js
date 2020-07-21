@@ -1,3 +1,4 @@
+/*
 const { Category } = require("../../src/models/category");
 
 class CategorySeeder {
@@ -11,4 +12,4 @@ class CategorySeeder {
   }
 }
 
-module.exports = { CategorySeeder };
+module.exports = { CategorySeeder };*/

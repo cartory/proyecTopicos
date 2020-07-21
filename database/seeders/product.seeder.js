@@ -1,3 +1,4 @@
+/*
 const { product } = require("../../src/models/Product");
 const faker = require("faker");
 
@@ -63,11 +64,7 @@ class ProductSeeder {
   
       await product.create(newProduct);
     } 
-    /*
-    for(var i=0;i<5;++i){
-      await product.create(list[i]);
-    }
-*/
+    
   }
 
   static addDays(dateObj, numDays) {
@@ -103,3 +100,4 @@ class ProductSeeder {
 }
 
 module.exports = { ProductSeeder };
+*/

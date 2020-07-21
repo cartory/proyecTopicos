@@ -1,3 +1,4 @@
+/*
 const { Order } = require("../../src/models/Order");
 const faker = require("faker");
 
@@ -57,3 +58,4 @@ class OrderSeeder {
 }
 
 module.exports = { OrderSeeder };
+*/
