@@ -1,4 +1,4 @@
-const { CategorySeeder } = require("./seeders/category.seeder");
+/*const { CategorySeeder } = require("./seeders/category.seeder");
 const { ProductSeeder } = require("./seeders/product.seeder");
 const { OrderSeeder } = require("./seeders/order.seeder");
 const { PaymentMethodSeeder } = require("./seeders/payment_method");
@@ -13,3 +13,4 @@ async function seedDatabase() {
 }
 
 seedDatabase();
+*/
