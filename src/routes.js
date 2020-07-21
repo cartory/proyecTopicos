@@ -67,7 +67,7 @@ class MyRouter {
       .delete("/orders/:id", OrderController.destroy)
       // PAYMENTMETHODS
       .get("/paymentMethods", PaymentMethodController.all)
-      .update("paymentMethods/:id", PaymentMethodController.update)
+      .put("paymentMethods/:id", PaymentMethodController.update)
       .delete("/paymentMethods/:id", PaymentMethodController.destroy)
       .get("/paymentMethods/:uid/:cid", PaymentMethodController.find)
       .post("/paymentMethods/:uid/:cid", PaymentMethodController.store);

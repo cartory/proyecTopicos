@@ -63,22 +63,10 @@ class ProductSeeder {
   
       await product.create(newProduct);
     } 
-
-
-
     /*
-
-
     for(var i=0;i<5;++i){
       await product.create(list[i]);
     }
-
-    
-
-
-      
-
-
 */
   }
 
