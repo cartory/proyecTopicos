@@ -22,6 +22,10 @@ class OrderController {
     res.json(await order.destroy(req.params.id));
   }
 
+  static async createOrder(req,res){
+    res.json(await order.processOrder(req.body));
+  }
+
 
 }
 

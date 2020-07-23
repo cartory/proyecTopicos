@@ -1,10 +1,8 @@
-
 const { Model } = require("../../config/Model");
 const collection = "users";
 const clients = "clients";
 
 class User extends Model {
-
   constructor() {
     super(collection);
   }

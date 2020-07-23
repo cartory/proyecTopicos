@@ -1,9 +1,7 @@
-
 const { Model } = require("../../config/Model");
 const collection = "products";
 
 class Product extends Model {
-
   constructor() {
     super(collection);
   }
@@ -44,17 +42,22 @@ class Product extends Model {
     products.forEach((product) => {
       var p = product.val();
       p.id = product.key;
-      if (product.child("name").val().toLowerCase().includes(name.toLowerCase())) {
+      if (
+        product.child("name").val().toLowerCase().includes(name.toLowerCase())
+      ) {
         array.push(p);
       } else if (
-        product.child("description").val().toLowerCase().includes(name.toLowerCase())
+        product
+          .child("description")
+          .val()
+          .toLowerCase()
+          .includes(name.toLowerCase())
       ) {
         array.push(p);
       }
     });
     return array;
   }
-
 }
 const product = new Product();
 module.exports = { product };

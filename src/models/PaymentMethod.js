@@ -1,10 +1,8 @@
-
 const { Model } = require("../../config/Model");
 const { user } = require("./User");
 const collection = "payment_methods";
 
 class PaymentMethod extends Model {
-
   constructor() {
     super(collection);
   }
@@ -26,5 +24,5 @@ class PaymentMethod extends Model {
   }
 }
 
-const paymentMethod = new PaymentMethod(); 
+const paymentMethod = new PaymentMethod();
 module.exports = { paymentMethod };

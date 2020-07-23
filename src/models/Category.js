@@ -3,7 +3,6 @@ const { Model } = require("../../config/Model");
 const collection = "categories";
 
 class Category extends Model {
-
   constructor() {
     super(collection);
   }

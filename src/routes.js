@@ -5,7 +5,7 @@ const { UserController } = require("./controllers/user.controller");
 const { ProductController } = require("./controllers/product.controller");
 const { PaymentController } = require("./controllers/payment.controller");
 const { OrderController } = require("./controllers/order.controller");
-const { PaymentMethodController } = require("./controllers/payment_method.controller");
+const { PaymentMethodController } = require("./controllers/paymentMethod.controller");
 
 class MyRouter {
   constructor() {
@@ -59,15 +59,16 @@ class MyRouter {
       // ORDERS
       .get("/orders", OrderController.all)
       .post("/orders", OrderController.store)
+      .post("/ordersTest", OrderController.createOrder)
       .get("/orders/:id", OrderController.find)
       .put("/orders/:id", OrderController.update)
       .delete("/orders/:id", OrderController.destroy)
       // PAYMENTMETHODS
+      
       .get("/paymentMethods", PaymentMethodController.all)
       .put("/paymentMethods/:id", PaymentMethodController.update)
       .delete("/paymentMethods/:id", PaymentMethodController.destroy)
-      .get("/paymentMethods/:uid/:cid", PaymentMethodController.find)
-      // .post("/paymentMethods/:uid/:cid", PaymentMethodController.store);
+      .get("/paymentMethods/:uid/:cid", PaymentMethodController.find);
   }
 }
 const myRouter = new MyRouter();
