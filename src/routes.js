@@ -5,7 +5,9 @@ const { UserController } = require("./controllers/user.controller");
 const { ProductController } = require("./controllers/product.controller");
 const { PaymentController } = require("./controllers/payment.controller");
 const { OrderController } = require("./controllers/order.controller");
-const { PaymentMethodController } = require("./controllers/paymentMethod.controller");
+const {
+  PaymentMethodController,
+} = require("./controllers/paymentMethod.controller");
 
 class MyRouter {
   constructor() {
