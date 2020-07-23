@@ -1,5 +1,6 @@
 const { Model } = require("../../config/Model");
 const { Payment } = require("../models/Payment");
+const {  product } = require("../models/Product");
 const collection = "orders";
 
 class Order extends Model {
@@ -47,6 +48,52 @@ class Order extends Model {
     });
     return array;
   }
+
+  async processOrder(order) {
+    var t = 0;
+    var temp = [];
+    var keys = [];
+    var items = order.shopping_cart;
+    var products = await product.db.once("value");
+    
+    products.forEach((prod)=>{
+        var pKey = prod.key;
+        var p = prod.val();
+        console.log(pKey);
+        for(var i=0;i<items.length;++i){
+          if(items[i].productID===pKey){
+            if(items[i].product_quantity>p.stock){
+              t++;
+            }
+            keys.push(pKey);
+            temp.push(p);
+          }
+        }
+    });
+
+    if (t === 0) {
+      var i = 0;
+      var o = await this.create(order);
+
+      temp.forEach(async (p)=>{
+          p.stock = p.stock - items[i].product_quantity;
+          await product.update(keys[i],p);
+          i++;
+      });
+
+      return {
+        orderId : o.key,
+        products : []
+      };
+
+    } else {
+      return {
+        orderId : null,
+        products : temp
+      };
+    }
+  }
+
 }
 
 const order = new Order();

@@ -1,11 +1,12 @@
-// const { User } = require("../../src/models/User");
-// const faker = require("faker");
-// class UserSeeder {
-//   static async seed() {
-//     const user = {
-//       nickname: "cartory",
-//       phone: 74942908,
-//     };
+/*
+const { User } = require("../../src/models/User");
+const faker = require("faker");
+class UserSeeder {
+  static async seed() {
+    const user = {
+      nickname: "cartory",
+      phone: 74942908,
+    };
 
 //     const client = {
 //       address: "C/Lemoine",
@@ -46,4 +47,5 @@
 //   }
 // }
 
-// module.exports = { UserSeeder };
+module.exports = { UserSeeder };
+*/

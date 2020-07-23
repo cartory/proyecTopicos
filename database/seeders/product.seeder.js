@@ -1,5 +1,6 @@
-// const { product } = require("../../src/models/Product");
-// const faker = require("faker");
+/*
+const { product } = require("../../src/models/Product");
+const faker = require("faker");
 
 // const categories = [
 //   "-MAxNQyICr9nP2SQvM3v", // 0  Carnes
@@ -61,14 +62,10 @@
 //         },
 //       };
   
-//       await product.create(newProduct);
-//     } 
-//     /*
-//     for(var i=0;i<5;++i){
-//       await product.create(list[i]);
-//     }
-// */
-//   }
+      await product.create(newProduct);
+    } 
+    
+  }
 
 //   static addDays(dateObj, numDays) {
 //     dateObj.setDate(dateObj.getDate() + numDays);
@@ -102,4 +99,5 @@
 //   }
 // }
 
-// module.exports = { ProductSeeder };
+module.exports = { ProductSeeder };
+*/

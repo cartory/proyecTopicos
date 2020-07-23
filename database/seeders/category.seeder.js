@@ -1,4 +1,5 @@
-// const { Category } = require("../../src/models/category");
+/*
+const { Category } = require("../../src/models/category");
 
 // class CategorySeeder {
 //   static async seed() {
@@ -11,4 +12,4 @@
 //   }
 // }
 
-// module.exports = { CategorySeeder };
+module.exports = { CategorySeeder };*/
