@@ -11,12 +11,13 @@ class PaymentMethod extends Model {
     var payment_methods = await this.all();
     var array = [];
     payment_methods.forEach((order) => {
-      var uid = order.child("userID").val();
-      var cid = order.child("clientID").val();
-      console.log(uid, userID);
-      console.log(cid, clientID);
-      if (uid == userID && cid == clientID) {
-        array.push(order);
+      var o = order.val();
+      o.id = order.key;
+      if (
+        order.child("userID").val() == userID &&
+        order.child("clientID").val() == clientID
+      ) {
+        array.push(o);
       }
     });
     console.log(array);
